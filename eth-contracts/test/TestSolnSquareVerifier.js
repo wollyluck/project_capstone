@@ -3,12 +3,12 @@
 // Test if an ERC721 token can be minted for contract - SolnSquareVerifier
 
 
-let SquareVerifier = artifacts.require('SquareVerifier');
+let SquareVerifier = artifacts.require('Verifier');
 let SolnSquareVerifier = artifacts.require('SolnSquareVerifier');
 
-let valid_proof = require('../../zokrates/code/square/proof');
+let valid_proof = require('./proof.json');
 let proof = valid_proof.proof;
-let input = valid_proof.input;
+let inputs = valid_proof.inputs;
 
 
 contract('TestSolnSquareVerifier', accounts => {
@@ -25,7 +25,7 @@ contract('TestSolnSquareVerifier', accounts => {
     
     
         it('ERC721 token can be minted for contract', async function(){
-            await this.contract.mintToken(account_two, 0, proof.a, proof.b, proof.c, input, {from:account_one});
+            await this.contract.mintToken(account_two, 0, proof.a, proof.b, proof.c, inputs, {from:account_one});
 
         });
     
@@ -34,10 +34,10 @@ contract('TestSolnSquareVerifier', accounts => {
             let exception_catched = false;
             let exception_message = "";
       
-            await this.contract.mintUniqueTokenTo(account_two, 0, proof.a,proof.b, proof.c, input, {from: account_one});
+            await this.contract.mintToken(account_two, 0, proof.a,proof.b, proof.c, inputs, {from: account_one});
       
             try {
-              await this.contract.mintUniqueTokenTo(account_three, 1, proof.a,proof.b, proof.c, input, {from: account_one});
+              await this.contract.mintToken(account_three, 1, proof.a,proof.b, proof.c, inputs, {from: account_one});
             } catch (e) {
               exception_catched = true;
               exception_message = e.message;

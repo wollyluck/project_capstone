@@ -1,4 +1,4 @@
-var ERC721MintableComplete = artifacts.require('ERC721MintableComplete');
+var ERC721MintableComplete = artifacts.require('MyMyERC721Token');
 
 contract('TestERC721Mintable', accounts => {
 
@@ -8,6 +8,8 @@ contract('TestERC721Mintable', accounts => {
     const account_four = accounts[3];
     const account_five = accounts[4];
     const account_six = accounts[5];
+    const symbol = "MyMy";
+    const name = "MyMyERC721";
 
     describe('match erc721 spec', function () {
         beforeEach(async function () { 
@@ -22,8 +24,8 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should return total supply', async function () { 
-            let amount = await this.contract.totalsupply();
-            asseert.equal(parseInt(amount), 4,"Incorrect token amount for total supply");
+            let amount = await this.contract.totalSupply();
+            assert.equal(parseInt(amount), 4,"Incorrect token amount for total supply");
         })
 
         it('should get token balance', async function () { 
@@ -33,7 +35,7 @@ contract('TestERC721Mintable', accounts => {
 
         // token uri should be complete i.e: https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/1
         it('should return token uri', async function () { 
-            let uri = await this.contract.BaseTokenURI();
+            let uri = await this.contract.baseTokenURI();
             assert.equal(uri, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/1", "Incorrect uri");
         })
 

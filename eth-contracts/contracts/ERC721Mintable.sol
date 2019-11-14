@@ -539,7 +539,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -takes in a 'to' address, tokenId, and tokenURI as parameters
 //      -returns a true boolean upon completion of the function
 //      -calls the superclass mint and setTokenURI functions
-contract MyMyERC721Token is ERC721Metadata("Old Jelly Exchange", "MyMy", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") {
+contract MyMyERC721Token is ERC721Metadata("Old Jelly Exchange", "MyMy", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/1") {
     function mint(address to, uint256 tokenId) public onlyOwner returns (bool) {
         super._mint(to, tokenId);
         super._setTokenURI(tokenId);

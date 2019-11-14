@@ -2,10 +2,10 @@ pragma solidity >=0.4.21 <0.6.0;
 
 import 'openzeppelin-solidity/contracts/utils/Address.sol';
 import './ERC721Mintable.sol';
-import './verifier.sol';
+import './Verifier.sol';
 
 // TODO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
-contract SquareVerifier is verifier {
+contract SquareVerifier is Verifier {
 
 }
 
@@ -40,11 +40,10 @@ event SolutionAdded(uint256 tokenId, address to);
 
 // TODO Create a function to add the solutions to the array and emit the event
 function _addSolution(address _to, uint256 _tokenId, bytes32 key) internal {
-    
-    Solution memory _sol = Solution({tokenId:_tokenId, to:_to});
-    
-    Solutions.push(_sol);
-    UniqueSolutions[key] = _sol;
+    Solution storage solution = UniqueSolutions[key];    
+
+    solution.to = msg.sender;
+    solution.tokenId = _tokenId;
     emit SolutionAdded(_tokenId, _to);
 
 }
@@ -59,12 +58,6 @@ SquareVerifier public verifierContract;
 constructor(address _verifierAddress) public{
     verifierContract = SquareVerifier(_verifierAddress);
 }
-
-function setVerifier(address verifier_address) public onlyOwner {
-        require(Address.isContract(verifier_address), "Owner must be a contract address");
-        _verifier = SquareVerifier(verifier_address);
-
-    }
 
 function mintToken
     (
