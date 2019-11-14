@@ -21,6 +21,16 @@ https://rinkeby.opensea.io/recent/old-jelly-exchange
 
 
 
+# test
+
+truffle develop
+
+truffle test ./test/TestERC721Mintable.js
+truffle test ./test/TestSquareVerifier.js
+truffle test ./test/TestSolnSquareVerifier.js
+
+
+
 
 
 # Project Resources
