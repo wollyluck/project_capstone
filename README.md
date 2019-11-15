@@ -1,11 +1,13 @@
 # Udacity Blockchain Capstone
 
-The capstone will build upon the knowledge you have gained in the course in order to build a decentralized housing product. 
-
 
 # Contract address 
 
 0x74F68B880D782A7EF1B9D33452395c4C7A7801B7
+
+# Verification address
+
+0xF7CfFe68D85F47Ad7E6067A8aC561c51Ea5Eb752
 
 # Contract owner address
 
@@ -17,8 +19,7 @@ The capstone will build upon the knowledge you have gained in the course in orde
 
 # Opensea page
 
-https://rinkeby.opensea.io/recent/old-jelly-exchange
-
+https://rinkeby.opensea.io/assets/old-jelly-exchange
 
 
 # test
